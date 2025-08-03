@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BookOpenIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline"
+import FloatingParticle from './FloatingParticle';
 
 const Navbar = () => {
 
@@ -13,19 +14,23 @@ const Navbar = () => {
 
     // Dynamic effect hover
     useEffect(() => {
+        const cards = document.querySelectorAll('.dynamic-gradient');
+        // if (!cards.length) return;
+
         const handleMouseMove = (e) => {
-            const cards = document.querySelectorAll('.dynamic-gradient');
             cards.forEach((card) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`)
+                card.style.setProperty('--mouse-y', `${y}px`);
             });
-        }
+        };
+
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, [])
+    }, []);
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -45,14 +50,15 @@ const Navbar = () => {
                             {
                                 '--mouse-x': '0px',
                                 '--mouse-y': '0px',
-                                background: isHovered ? `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59,130,246,0,4), transparent 40%)` : 'transparent'
+                                background: isHovered ? `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59,130,246,0.4), transparent 40%)` : 'transparent'
+
                             }
                         }
                     >
-                        <div className='bg-gray-900/80 backdrop-blur-sm rounded-2xl'>
+                        <div className='bg-gray-900/80 backdrop-blur-sm rounded-2xl p-1'>
                             <h1 className='text-lg md:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-text-shine'>
                                 <BookOpenIcon className='w-5 h-5 md:h-6 inline-block animate-float text-cyan-400 mr-1 md:mr-2 stroke-[2.5]'></BookOpenIcon>
-                                <a href="/" className='ml-1 md:ml-2 text-shadow-[0_0_10px_rgba(96,165,250,0.5)]'>
+                                <a href="/" className='ml-1  md:ml-2 text-shadow-[0_0_10px_rgba(96,165,250,0.5)]'>
                                     BOOKSNAP
                                 </a>
 
@@ -66,7 +72,7 @@ const Navbar = () => {
                     <div className="w-full md:flex-1 md:max-w-2xl order-3 md:order-2 lg:ml-6 md:mx-4">
                         <form onSubmit={handleSubmit} className='w-full relative group'>
                             {/* Background Blur Layer */}
-                            <div className='absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl blur-sm opacity-30 group-hover:opacity-50 transition-all duration-500 animate-pulse-slow z-0' />
+                            <div className='absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-all duration-500 animate-pulse-slow z-0' />
 
                             {/* Input Field and Icon */}
                             <div className='relative dynamic-gradient '>
@@ -103,6 +109,7 @@ const Navbar = () => {
 
                 </div>
             </div>
+            <FloatingParticle></FloatingParticle>
 
         </nav>
     );
