@@ -8,7 +8,7 @@ const Banner = () => {
     return (
         <div className="  min-h-screen bg-gradient-to-br from-gray-900 to-blue-900/30 relative overflow-hidden">
             <div className=" container mx-auto max-w-7xl  px-4 h-screen mt-4 ">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-1 md:gap-4 lg:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-4 lg:gap-12">
                     {/* Text content */}
                     <div className=" lg:col-span-1 flex flex-col justify-center space-y-6">
                         <motion.h1
