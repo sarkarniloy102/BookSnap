@@ -1,4 +1,4 @@
-import { div, title } from "framer-motion/client";
+import { StarIcon } from "@heroicons/react/16/solid";
 import { useEffect, useState } from "react";
 
 const Hero = ({ searchQuery }) => {
@@ -134,24 +134,59 @@ const Hero = ({ searchQuery }) => {
                                         rel="noopener noreferrer"
                                         className="absolute inset-0 z-10 cursor-pointer"
                                         aria-label={`view ${book.title}`}></a>
-                                        <div className="p-4 md:p-6">
-                                           <div className="relative aspect-[4/5] w-full rounded-xl md:rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-400/10 to-blue-400/10">
-                                           <img src={book.imageUrl || getPlaceholder(book.title)} alt={book.title} 
-                                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                           style={
-                                            {imageRendering:'-webkit-optimize-contrast'}
-                                           }
-                                           onError={(e)=>(e.target.src= getPlaceholder(book.title))}/>
-                                           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"/>
-                                           <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 bg-gradient-to-t from-gray-900/90 to-transparent">
-                                           <span className="text-xs md:text-sm font-medium text-cyan-300">
-                                            {book.printType}
-                                           </span>
-
-                                           </div>
-                                           
-                                           </div>
+                                    <div className="p-4 md:p-6">
+                                        <div className="relative aspect-[4/5] w-full rounded-xl md:rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-400/10 to-blue-400/10">
+                                            <img src={book.imageUrl || getPlaceholder(book.title)} alt={book.title}
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                style={
+                                                    { imageRendering: '-webkit-optimize-contrast' }
+                                                }
+                                                onError={(e) => (e.target.src = getPlaceholder(book.title))} />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+                                            <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 bg-gradient-to-t from-gray-900/90 to-transparent">
+                                                <span className="text-xs md:text-sm font-medium text-cyan-300">
+                                                    {book.printType}
+                                                </span>
+                                            </div>
                                         </div>
+                                        <div className="mt-4 md:mt-6">
+                                            <h3 className="text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                                                {book.title}
+                                            </h3>
+                                            <p className="text-gray-400 mt-1 md:mt-2 text-sm md:text-base">{book.authors}</p>
+                                            <div className="flex items-center mt-2 md:mt-3">
+                                                <div className="flex text-amber-400">
+                                                    {
+                                                        [...Array(5)].map((_, i) => (
+                                                            <StarIcon
+                                                                key={i}
+                                                                className={`h-4 w-4 md:h-5 md:w-5
+                                                                ${i < Math.floor(book.rating) ? 'fill-current' : 'fill-gray-600'}`}></StarIcon>
+                                                        ))
+                                                    }
+                                                </div>
+                                                <span className="ml-2 text-cyan-300 text-sm md:text-base">{book.rating}</span>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-2 md:gap-4 text-xs md:text-sm">
+                                                {/* 1 */}
+                                                <div className="flex items-center space-x-1 md:space-x-2">
+                                                    <span className="text-gray-400">Pages: </span>
+                                                    <span className="text-cyan-300">{book.pageCount}</span>
+                                                </div>
+                                                {/* 2 */}
+                                                <div className="flex items-center space-x-1 md:space-x-2">
+                                                    <span className="text-gray-400">Formate: </span>
+                                                    <span className="text-purple-300">{book.printType}</span>
+                                                </div>
+                                                {/* 3 */}
+                                                <div className="flex items-center space-x-1 md:space-x-2">
+                                                    <span className="text-gray-400">Ratings: </span>
+                                                    <span className="text-blue-300">{book.ratingsCount}</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
 
                                 </div>
                             )
