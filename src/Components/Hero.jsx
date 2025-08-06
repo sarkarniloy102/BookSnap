@@ -62,7 +62,7 @@ const Hero = ({ searchQuery }) => {
 
     const getPlaceholder = (title) => {
         const initials = title
-            .spilit(' ')
+            .split(' ')
             .slice(0, 3)
             .map(word => word[0]?.toUpperCase || '')
             .join('');
@@ -184,15 +184,59 @@ const Hero = ({ searchQuery }) => {
                                                     <span className="text-blue-300">{book.ratingsCount}</span>
                                                 </div>
                                             </div>
+                                            {/* 4 */}
+                                            <div className="mt-2 md:mt-4 flex flex-wrap gap-1 md:gap-2">
+                                                {
+                                                    book.categories.split(',').slice(0, 3).map((category, idx) => (
+                                                        <span key={idx} className="'px-2 py-1 md:py-1 rounded-full bg-gray-700/50 text-xs text-cyan-300 backdrop-blur-sm">
+                                                            {category.trim()}
+                                                            {
+                                                                idx === 2 && book.categories.split(',').length > 3 &&
+                                                                (<span className="ml-1 text-gray-400">
+                                                                    +{book.categories.spilit(',').length - 3}
+                                                                </span>)
+                                                            }
+                                                        </span>
+                                                    ))
+                                                }
+                                            </div>
 
                                         </div>
                                     </div>
+                                    <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-cyan-400/30 to-blue-500/20 opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
 
                                 </div>
                             )
                         })
                     }
 
+                </div>
+                {/* paginition */}
+                <div className="mt-6 md:mt-8 flex flex-wrap justify-center items-center gap-2 md:gap-3">
+                    <button
+                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                        disabled={currentPage === 1}
+                        className="px-3 py-1 md:px-4 md:py-2 rounded-md md:rounded-lg bg-gray-900/80 border border-gray-700/50 text-cyan-300 text-xs md:text-sm hover:bg-gray-900/60 transition-colors disabled:opacity-50 cursor-pointer"  >
+                        Previous
+                    </button>
+                    {
+                        generatePageNumber().map((page, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => setCurrentPage(page)}
+                                className={`px-3 py-1 md:px-4 md:py-2 rounded-lg text-xs md:text-sm cursor-pointer ${page === currentPage
+                                    ? 'bg-cyan-400/30 text-cyan-300' : 'bg-gray-900/80 text-cyan-300 hover:bg-gray-900/60'}`}>
+                                {page}
+
+                            </button>
+                        ))
+                    }
+                    <button
+                        onClick={() => setCurrentPage(p => Math.min(totalPage, p + 1))}
+                        disabled={currentPage === totalPage}
+                        className="px-3 py-1 md:px-4 md:py-2 rounded-md md:rounded-lg bg-gray-900/80 border border-gray-700/50 text-cyan-300 text-xs md:text-sm hover:bg-gray-900/60 transition-colors disabled:opacity-50 cursor-pointer"  >
+                        Next
+                    </button>
                 </div>
 
             </div>
