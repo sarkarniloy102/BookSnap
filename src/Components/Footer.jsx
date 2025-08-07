@@ -16,7 +16,25 @@ const Footer = () => {
                         </div>
                         <p className="text-gray-400">Unlock endless adventures. Explore, imagine, and dive into books that inspire and transform.</p>
                     </div>
+                    {/* Quick Links section */}
+                    <div className="space-y-3">
+                        <h3 className="text-lg font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                            Navigate
+                        </h3>
+                        <ul className="space-y-3">
+                            {
+                                ['Trending', 'New Releases', 'Genres', 'Authors'].map((item) => (
+                                    <li key={item}>
+                                        <a href="#" className="text-gray-400 hover:text-cyan-300 text-sm transition-colors flex items-center justify-center sm:justify-start group:">
+                                            <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"/>
+                                            {item}
+                                        </a>
+                                    </li>
+                                ))
+                            }
+                        </ul>
 
+                    </div>
                 </div>
             </div>
 
