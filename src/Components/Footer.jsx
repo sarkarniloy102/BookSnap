@@ -1,5 +1,6 @@
 import { BookOpenIcon, CommandLineIcon, GlobeAltIcon } from "@heroicons/react/16/solid";
 import FloatingParticle from "./FloatingParticle";
+import { Github, Instagram, MessagesSquare, Twitter } from "lucide-react";
 
 const Footer = () => {
     return (
@@ -42,6 +43,7 @@ const Footer = () => {
                         <h3 className="text-lg font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                             Stacked On
                         </h3>
+                        {/* part 1 */}
                         <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
                             {
                                 ['React', 'Vite', 'Tailwind', 'GoogleAPI'].map((tech) => (
@@ -53,6 +55,7 @@ const Footer = () => {
                                 ))
                             }
                         </div>
+                        {/* part 2 */}
                         <div className="mt-4 space-y-2">
                             {/* 1 */}
                             <div className="flex items-center justify-center sm:justify-start space-x-2 text-gray-400">
@@ -64,6 +67,34 @@ const Footer = () => {
                                 <GlobeAltIcon className="h-5 w-5"></GlobeAltIcon>
                                 <span className="text-sm">Global Book Database</span>
                             </div>
+
+                        </div>
+                    </div>
+                    {/* Social Links */}
+                    <div className=" space-y-4 text-center sm:text-left">
+                        <h3 className="text-lg font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                            Link Up
+                        </h3>
+                        <div className="flex justify-center sm:justify-start space-x-4">
+                            {
+                                [
+                                    ['Github','hover:text-purple-300',Github],
+                                   ['Instagram','hover:text-indigo-300',Instagram],
+                                   ['Discord','hover:text-cyan-300',MessagesSquare],
+                                   ['Twitter','hover:text-pink-300',Twitter],
+                                // eslint-disable-next-line no-unused-vars
+                                ].map(([platform,className, Icon])=>(
+                                    <a href="#" 
+                                    key={platform}
+                                    className={`text-gray-400 ${className} transition-colors hover:scale-110`}>
+                                        <span className="sr-only">
+                                            {platform}
+                                        </span>
+                                        <Icon className="h-6 w-6 md:h-8 md:w-8" stroke="currentColor"></Icon>
+
+                                    </a>
+                                ))
+                            }
 
                         </div>
                     </div>
