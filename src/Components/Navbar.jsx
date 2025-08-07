@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { BookOpenIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline"
 import FloatingParticle from './FloatingParticle';
 
-const Navbar = () => {
+const Navbar = ({ handleSearch }) => {
 
     const [isHovered, setIsHovered] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // handleSearch(searchTerm);
+        handleSearch(searchTerm);
     }
 
     // Dynamic effect hover
