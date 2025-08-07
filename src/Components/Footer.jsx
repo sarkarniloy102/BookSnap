@@ -78,15 +78,15 @@ const Footer = () => {
                         <div className="flex justify-center sm:justify-start space-x-4">
                             {
                                 [
-                                    ['Github','hover:text-purple-300',Github],
-                                   ['Instagram','hover:text-indigo-300',Instagram],
-                                   ['Discord','hover:text-cyan-300',MessagesSquare],
-                                   ['Twitter','hover:text-pink-300',Twitter],
-                                // eslint-disable-next-line no-unused-vars
-                                ].map(([platform,className, Icon])=>(
-                                    <a href="#" 
-                                    key={platform}
-                                    className={`text-gray-400 ${className} transition-colors hover:scale-110`}>
+                                    ['Github', 'hover:text-purple-300', Github],
+                                    ['Instagram', 'hover:text-indigo-300', Instagram],
+                                    ['Discord', 'hover:text-cyan-300', MessagesSquare],
+                                    ['Twitter', 'hover:text-pink-300', Twitter],
+                                    // eslint-disable-next-line no-unused-vars
+                                ].map(([platform, className, Icon]) => (
+                                    <a href="#"
+                                        key={platform}
+                                        className={`text-gray-400 ${className} transition-colors hover:scale-110`}>
                                         <span className="sr-only">
                                             {platform}
                                         </span>
@@ -97,6 +97,28 @@ const Footer = () => {
                             }
 
                         </div>
+                    </div>
+                </div>
+                {/* Copyright */}
+                <div className="border-t border-gray-800 mt-12 pt-8 text-center space-y-2 w-full">
+                    <p className="text-gray-500 text-sm">
+                        &copy; {new Date().getFullYear()} BookSnap. Rights to all stories are owned by their original authors.
+                    </p>
+                    <p className="text-gray-500 text-sm">
+                        A project by{' '}
+                        <a
+                            href="https://sarkarniloy.netlify.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 hover:text-purple-400 transition-colors"
+                        >
+                            Sarkar Niloy
+                        </a>
+                    </p>
+                    <div className="mt-2 flex flex-wrap justify-center space-x-4 text-gray-500 text-sm">
+                        <a href="#" className="hover:text-cyan-300 transition-colors">Privacy</a>
+                         <a href="#" className="hover:text-cyan-300 transition-colors">Terms</a>
+                          <a href="#" className="hover:text-cyan-300 transition-colors">Contract</a>
                     </div>
                 </div>
             </div>
