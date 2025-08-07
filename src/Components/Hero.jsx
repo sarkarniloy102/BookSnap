@@ -1,5 +1,7 @@
 import { StarIcon } from "@heroicons/react/16/solid";
 import { useEffect, useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const Hero = ({ searchQuery }) => {
 
@@ -7,7 +9,7 @@ const Hero = ({ searchQuery }) => {
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
-    const totalPage = 6;
+    const totalPage = 7;
 
     // api
     useEffect(() => {
@@ -75,7 +77,7 @@ const Hero = ({ searchQuery }) => {
         )}`;
     }
 
-    const generatePageNumber = () => [1, 2, 3, 4, 5, 6];
+    const generatePageNumber = () => [1, 2, 3, 4, 5, 6,7];
 
     if (loading) {
         return (
@@ -106,8 +108,15 @@ const Hero = ({ searchQuery }) => {
 
 
     return (
-        <div className="min-h-screen pt-16 md:pt-20 bg-gradient-to-b from-gray-900 to-gray-800 p-4 sm:p-6 md:p-8">
+        <div className="min-h-screen pt-16 md:pt-12 bg-gradient-to-b from-gray-900 to-gray-800 p-4 sm:p-6 md:p-8">
             <div className="max-w-7xl mx-auto">
+
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-4xl font-bold text-center bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-6">
+                    Available Books
+                </motion.h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
 
                     {
@@ -185,10 +194,10 @@ const Hero = ({ searchQuery }) => {
                                                 </div>
                                             </div>
                                             {/* 4 */}
-                                            <div className="mt-2 md:mt-4 flex flex-wrap gap-1 md:gap-2">
+                                            <div className="mt-2 md:mt-4  flex flex-wrap gap-1 md:gap-2">
                                                 {
                                                     book.categories.split(',').slice(0, 3).map((category, idx) => (
-                                                        <span key={idx} className="'px-2 py-1 md:py-1 rounded-full bg-gray-700/50 text-xs text-cyan-300 backdrop-blur-sm">
+                                                        <span key={idx} className="px-3 py-1 md:py-1 rounded-full bg-gray-700/50 text-xs text-cyan-300 backdrop-blur-sm">
                                                             {category.trim()}
                                                             {
                                                                 idx === 2 && book.categories.split(',').length > 3 &&
